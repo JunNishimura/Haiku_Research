@@ -16,19 +16,18 @@ def csv_haiku_extract(csv_path, col):
 
     return h_list
 
-def extract_surface(m_tagger, text):
+def wakachi_gaki(m_tagger, text):
     '''
-    function to extract surface from text
+    function to execute wakachi gaki
     '''
-    surfaces = []
-    for t in text:
-        node = m_tagger.parseToNode(t)
-        while node:
-            if node.feature.split(',')[0] != u'BOS/EOS':
-                surfaces.append(node.surface)
-            node = node.next
+    wakachi = []
+    node = m_tagger.parseToNode(text)
+    while node:
+        if node.feature.split(',')[0] != u'BOS/EOS':
+            wakachi.append(node.surface)
+        node = node.next
 
-    return surfaces
+    return ' '.join(wakachi)
 
 def morphological_analyzer(m_tagger, text):
     '''
@@ -56,6 +55,16 @@ def get_wordCount_dict(words_list, descending=True):
     """
     wc = Counter(words_list)
     return dict(sorted(wc.items(), key=lambda x: x[1], reverse=descending))
+
+def text2nlist(text):
+    '''
+    extract nouns from the text and return them as a list
+    '''
+    m = MeCab.Tagger('-Ochasen')
+    morphemes = morphological_analyzer(m, text)    
+    nouns = extract_words_lexicalCategory('名詞', morphemes)
+
+    return nouns
 
 def extract_lexicalCategory(morphemes):
     '''extract lexical category from morpheme list'''
