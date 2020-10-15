@@ -3,7 +3,13 @@
 ## Question
 松尾芭蕉は他の俳人とどのような違いがあるのか？
 
-## Data Gatherin
+## Things I did
+- WordCloudによる頻出後の可視化
+- 季節毎の俳句数の分布
+
+## Things I want to do
+- 自作俳句が、どの俳人の作風に近いかを提示
+- 
 
 
 ## 俳人リスト
