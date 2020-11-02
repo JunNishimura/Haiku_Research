@@ -3,14 +3,15 @@
 ## Question
 松尾芭蕉は他の俳人とどのような違いがあるのか？
 
+## TODO
+- EDA(切れ字の数を数えたり、できるだけグラフにして見えるようにする)
+
 ## Things I did
 - WordCloudによる頻出後の可視化
 - 季節毎の俳句数の分布
 
 ## Things I want to do
 - 自作俳句が、どの俳人の作風に近いかを提示
-- 
-
 
 ## 俳人リスト
 - [松尾芭蕉](http://www5c.biglobe.ne.jp/~n32e131/haiku/bashou.html)
