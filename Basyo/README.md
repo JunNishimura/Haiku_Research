@@ -7,8 +7,10 @@
 - EDA(切れ字の数を数えたり、できるだけグラフにして見えるようにする)
 
 ## Things I did
-- WordCloudによる頻出後の可視化
-- 季節毎の俳句数の分布
+#### WordCloudによる頻出後の可視化
+![wordcloud](https://user-images.githubusercontent.com/28744711/96115469-f42f2580-0f21-11eb-8bd7-8d9b7b0f375e.png)
+#### 季節毎の俳句数の分布
+![season_ratio](https://user-images.githubusercontent.com/28744711/96115466-f2fdf880-0f21-11eb-963a-a0960c557ccf.png)
 
 ## Things I want to do
 - 自作俳句が、どの俳人の作風に近いかを提示
