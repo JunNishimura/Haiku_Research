@@ -56,15 +56,25 @@ def get_wordCount_dict(words_list, descending=True):
     wc = Counter(words_list)
     return dict(sorted(wc.items(), key=lambda x: x[1], reverse=descending))
 
-def text2nlist(text):
+def txt2postxt(text, pos, isOriginal=False):
     '''
-    extract nouns from the text and return them as a list
+    extract words matched with passed part-of-speech from the text.
+
+    Prameter
+    ----------------------
+    text: 文字列
+    pos: 品詞
+    isOriginal: 原形で返すか否か
     '''
     m = MeCab.Tagger('-Ochasen')
-    morphemes = morphological_analyzer(m, text)    
-    nouns = extract_words_lexicalCategory('名詞', morphemes)
 
-    return nouns
+    # 形態素解析
+    morphemes = morphological_analyzer(m, text) 
+
+    # 指定された品詞を持つ文字を抽出
+    words = morphemes2pos(morphemes, pos, isOriginal)
+
+    return ' '.join(words)
 
 def extract_lexicalCategory(morphemes):
     '''extract lexical category from morpheme list'''
@@ -74,14 +84,23 @@ def extract_lexicalCategory(morphemes):
     
     return list(lexical_category)
 
-def extract_words_lexicalCategory(category, morphemes):
+def morphemes2pos(morphemes, pos, isOriginal=False):
     '''
-    extract words from the list based on the lexical category (word class)
+    extract words matched with passed part-of-speech from morpheme list
+
+    Prameter
+    ----------------------
+    pos: 品詞
+    morphemes: 形態素のリスト
+    isOriginal: 原形を返すか否か
     '''
     words = []
     for morpheme in morphemes:
-        if morpheme['pos'] == category:
-            words.append(morpheme['surface'])
+        if morpheme['pos'] == pos:
+            if isOriginal:
+                words.append(morpheme['base'])
+            else:
+                words.append(morpheme['surface'])
     
     return words
 
