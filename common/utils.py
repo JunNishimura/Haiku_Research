@@ -1,6 +1,6 @@
 import MeCab
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup   
 from collections import Counter
 
 def csv_haiku_extract(csv_path, col):
@@ -29,10 +29,11 @@ def wakachi_gaki(m_tagger, text):
 
     return ' '.join(wakachi)
 
-def morphological_analyzer(m_tagger, text):
+def morphological_analyzer(text):
     '''
     execute morphological analysis and return surface, base, word class1, word class2
     '''
+    m_tagger = MeCab.Tagger('-d C:\\Program Files\\MeCab\\dic\\UniDic-wabun_1603')
     morphemes = []
     node = m_tagger.parseToNode(text)
     while node:
